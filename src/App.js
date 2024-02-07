@@ -1,23 +1,24 @@
-import logo from './logo.svg';
 import './App.css';
+import { useEffect } from 'react';
 
 function App() {
+  useEffect(() => {
+    // Create a new audio object with the file
+    const audio = new Audio('/nyancat.mp3');
+    
+    // Play the audio file when the component mounts
+    audio.play()
+      .catch(error => console.error("Error playing the audio file:", error));
+
+    // Optional: Return a cleanup function to pause the audio if the component unmounts
+    return () => audio.pause();
+  }, []); // Empty dependency array means this effect runs once on mount
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className='center-bottom'>
+        <h1 className='jumbo'>Yes</h1>
+      </div>
     </div>
   );
 }
